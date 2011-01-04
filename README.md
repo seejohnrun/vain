@@ -12,7 +12,7 @@ Vain is a simple command line utility for viewing a list of github repositories 
 
 ### use the utility
 
-		vain
+    vain
     vain seejohnrun
 
 ---
