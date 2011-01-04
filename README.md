@@ -6,7 +6,7 @@ Vain is a simple command line utility for viewing a list of github repositories 
 
 ### installation
 
-    gem install vein
+    gem install vain
 
 ---
 
