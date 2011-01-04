@@ -17,6 +17,17 @@ Vain is a simple command line utility for viewing a list of github repositories 
 
 ---
 
+### sample output
+
+    seejohnrun - 9 followers - 21 public repositories
+    ice_cube                    241 watchers   14 forks         
+    easy_translate              37 watchers    2 forks          
+    tweetStream4J               6 watchers     3 forks          
+    my_tunes                    3 watchers     1 forks          
+    ...
+
+---
+
 ### Coming soon:
 
 * An easy way to view your stream
