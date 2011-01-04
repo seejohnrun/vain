@@ -18,7 +18,7 @@ spec = Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.summary = 'GitHub account info'
   s.test_files = Dir.glob('spec/*.rb')
-  s.version = Vain::VERSION
+  s.version = Vain::version
   s.rubyforge_project = "vain"
 
 end

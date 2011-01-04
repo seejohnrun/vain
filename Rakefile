@@ -7,10 +7,10 @@ end
 
 task :release => :build do
   # tag and push
-  system "git tag v#{Vain::VERSION}"
+  system "git tag v#{Vain::version}"
   system "git push origin --tags"
   # push the gem
-  system "gem push vain-#{Vain::VERSION}.gem"
+  system "gem push vain-#{Vain::version}.gem"
 end
  
 Spec::Rake::SpecTask.new(:test) do |t|
