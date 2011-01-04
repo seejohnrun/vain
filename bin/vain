@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'vain'
+
+console = Vain::CLI.new
+console.start
