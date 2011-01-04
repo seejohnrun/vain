@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe ConsoleTweet do
+describe Vain do
   
   it 'should be true' do
     true.should be(true)
