@@ -30,8 +30,8 @@ module Vain
         [
           NameColor + repo.name + DefaultColor,
           '     ',
-          "#{repo.watchers} watchers",
-          "#{repo.forks} forks",
+          "#{repo.watchers} #{repo.watchers == 1 ? 'watcher' : 'watchers'}",
+          "#{repo.forks} #{repo.forks == 1 ? 'fork' : 'forks'}",
           ErrorColor + (repo.fork ? '(FORK)' : '')
         ]
       end
