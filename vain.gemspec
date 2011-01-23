@@ -6,8 +6,8 @@ spec = Gem::Specification.new do |s|
   s.name = 'vain'  
   s.author = 'John Crepezzi'
   s.add_development_dependency('rspec')
-  s.add_dependency('hubruby')
-  s.add_dependency('columnizer', '0.0.3')
+  s.add_dependency('octokit', '~> 0.5.0')
+  s.add_dependency('columnizer', '~> 0.0.3')
   s.description = 'View information about a GitHub account'
   s.email = 'john@crepezzi.com'
   s.executables = 'vain'

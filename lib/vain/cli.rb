@@ -4,7 +4,7 @@ module Vain
 
     require 'rubygems'
     require 'columnizer'
-    require 'hubruby'
+    require 'octokit'
 
     # Some colors used in the output
     NameColor = "\e[33m"
@@ -21,11 +21,14 @@ module Vain
     private
 
     def status(user_handle)
-      user = GitHub.user(user_handle)
-      return failtown("Unknown user: #{user_handle}") if user.login.nil?
+      begin
+        user = Octokit.user(user_handle)
+      rescue Octokit::NotFound
+        return failtown("Unknown user: #{user_handle}")
+      end
       puts "#{CommandColor}#{user.login}#{DefaultColor} - #{user.followers_count} followers - #{user.public_repo_count} public repositories"
       # get the repositories sorted by watcher count
-      repositories = user.repositories.sort_by { |r| 1.0 / r.watchers }
+      repositories = Octokit.repositories(user_handle).sort_by { |r| 1.0 / r.watchers }
       data = repositories.map do |repo|
         [
           NameColor + repo.name + DefaultColor,
