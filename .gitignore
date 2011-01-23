@@ -2,3 +2,4 @@
 *.swo
 .bundle
 *.gem
+Gemfile.lock
