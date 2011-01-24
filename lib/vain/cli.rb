@@ -32,7 +32,7 @@ module Vain
           '     ',
           "#{repo.watchers} #{repo.watchers == 1 ? 'watcher' : 'watchers'}",
           "#{repo.forks} #{repo.forks == 1 ? 'fork' : 'forks'}",
-          ErrorColor + (repo.fork ? '(FORK)' : '')
+          ErrorColor + (repo.fork ? '(FORK)' : '') + DefaultColor
         ]
       end
       puts Columnizer.columnize(data, :padding => 3)
