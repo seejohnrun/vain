@@ -28,6 +28,10 @@ Vain is a simple command line utility for viewing a list of github repositories 
 
 ---
 
+* Featured on [the changelog](http://thechangelog.com/post/2903183012/vain-check-github-watchers-forks-from-the-command-line)
+
+---
+
 ### Coming soon:
 
 * An easy way to view your stream
