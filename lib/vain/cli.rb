@@ -1,31 +1,6 @@
 require 'rubygems'
 require 'columnizer'
-require 'restclient'
-require 'json'
-require 'hashie'
-
-module Github
-  class User < Hashie::Mash
-    def self.get(user_name)
-      response = RestClient.get("http://github.com/api/v2/json/user/show/#{user_name}")
-      User.new(JSON.parse(response)["user"])
-    end
-  end
-
-  class Repo < Hashie::Mash
-    def self.all(user_name)
-      all_repos = []
-      page      = 1
-      begin
-        response = RestClient.get("http://github.com/api/v2/json/repos/show/#{user_name}?page=#{page}")
-        repos    = JSON.parse(response)["repositories"]
-        all_repos << repos.map { |hash| Repo.new(hash) }
-        page     += 1
-      end while repos.size == 30
-      all_repos.flatten
-    end
-  end
-end
+require 'vain/github'
 
 module Vain
 
@@ -46,11 +21,11 @@ module Vain
     private
 
     def status(user_handle)
-      user = Github::User.get(user_handle)
-      return failtown("Unknown user: #{user_handle}") if user.login.nil?
+      user = Vain::Github::User.get(user_handle)
+      return failtown("Unknown user: #{user_handle}") if user.nil?
       puts "#{CommandColor}#{user.login}#{DefaultColor} - #{user.followers_count} followers - #{user.public_repo_count} public repositories"
       # get the repositories sorted by watcher count
-      repositories = Github::Repo.all(user_handle).sort_by { |r| 1.0 / r.watchers }
+      repositories = Vain::Github::Repo.all(user_handle).sort_by { |r| 1.0 / r.watchers }
       data = repositories.map do |repo|
         [
           NameColor + repo.name + DefaultColor,
