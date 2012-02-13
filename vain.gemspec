@@ -5,10 +5,10 @@ spec = Gem::Specification.new do |s|
 
   s.name = 'vain'
   s.author = 'John Crepezzi'
-  s.add_dependency('columnizer',  '0.0.3')
+  s.add_dependency('columnizer', '0.0.3')
   s.add_dependency('rest-client', '~> 1.6')
-  s.add_dependency('json_pure',        '~> 1.4.6')
-  s.add_dependency('hashie',      '~> 1.0')
+  s.add_dependency('json_pure', '~> 1.4.6')
+  s.add_dependency('hashie', '~> 1.0')
   s.description = 'View information about a GitHub account'
   s.email = 'john@crepezzi.com'
   s.executables = 'vain'
