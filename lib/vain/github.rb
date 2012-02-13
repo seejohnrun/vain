@@ -10,8 +10,8 @@ module Vain
     class User < Hashie::Mash
       def self.get(user_name)
         begin
-          response = RestClient.get("http://github.com/api/v2/json/user/show/#{user_name}")
-          User.new(JSON.parse(response)["user"])
+          response = RestClient.get("https://api.github.com/users/#{user_name}")
+          User.new(JSON.parse(response))
         rescue RestClient::ResourceNotFound
           nil
         end
@@ -24,7 +24,7 @@ module Vain
         all_repos = []
         page = 1
         begin
-          response = RestClient.get("http://github.com/api/v2/json/repos/show/#{user_name}?page=#{page}")
+          response = RestClient.get("https://api.github.com/users/#{user_name}/repos?page=#{page}")
           repos = JSON.parse(response)["repositories"]
           all_repos.concat repos.map { |hash| Repo.new(hash) }
           page += 1
