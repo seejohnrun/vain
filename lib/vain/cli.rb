@@ -23,7 +23,7 @@ module Vain
     def status(user_handle)
       user = Vain::Github::User.get(user_handle)
       return failtown("Unknown user: #{user_handle}") if user.nil?
-      puts "#{CommandColor}#{user.login}#{DefaultColor} - #{user.followers_count} followers - #{user.public_repo_count} public repositories"
+      puts "#{CommandColor}#{user.login}#{DefaultColor} - #{user.followers} followers - #{user.public_repos} public repositories"
       # get the repositories sorted by watcher count
       repositories = Vain::Github::Repo.all(user_handle).sort_by { |r| 1.0 / r.watchers }
       data = repositories.map do |repo|
