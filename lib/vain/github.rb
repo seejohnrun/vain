@@ -25,7 +25,7 @@ module Vain
         page = 1
         begin
           response = RestClient.get("https://api.github.com/users/#{user_name}/repos?page=#{page}")
-          repos = JSON.parse(response)["repositories"]
+          repos = JSON.parse(response)
           all_repos.concat repos.map { |hash| Repo.new(hash) }
           page += 1
         end while repos.size == 30
