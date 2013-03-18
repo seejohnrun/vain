@@ -13,7 +13,6 @@ module Vain
     ErrorColor   = "\e[31m"
 
     # Get the commands from the command line
-    # (Somewhat primitive, will be expanded) TODO
     def start
       ARGV.length == 1 ? status(ARGV[0]) : help
     end

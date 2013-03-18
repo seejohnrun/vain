@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
-require File.dirname(__FILE__) + '/../lib/vain'
+$:.unshift File.join File.dirname(__FILE__), '..', 'lib'
+require 'vain'
 
 console = Vain::CLI.new
 console.start
