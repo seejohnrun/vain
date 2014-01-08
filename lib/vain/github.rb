@@ -6,11 +6,13 @@ module Vain
 
   module Github
 
+    ACCEPT = 'application/vnd.github.v3+json'
+
     # Try to get a user - return nil if they're not found
     class User < Hashie::Mash
       def self.get(user_name)
         begin
-          response = RestClient.get("https://api.github.com/users/#{user_name}")
+          response = RestClient.get("https://api.github.com/users/#{user_name}", accept: ACCEPT)
           User.new(JSON.parse(response))
         rescue RestClient::ResourceNotFound
           nil
@@ -24,7 +26,7 @@ module Vain
         all_repos = []
         page = 1
         begin
-          response = RestClient.get("https://api.github.com/users/#{user_name}/repos?page=#{page}")
+          response = RestClient.get("https://api.github.com/users/#{user_name}/repos?page=#{page}", accept: ACCEPT)
           repos = JSON.parse(response)
           all_repos.concat repos.map { |hash| Repo.new(hash) }
           page += 1
